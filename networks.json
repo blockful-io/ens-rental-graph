@@ -1,0 +1,8 @@
+{
+  "sepolia": {
+    "ETHRegistrarController": {
+      "address": "0xFED6a969AaA60E4961FCD3EBF1A2e8913ac65B72",
+      "startBlock": 3790244
+    }
+  }
+}
