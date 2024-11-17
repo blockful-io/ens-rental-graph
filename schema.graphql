@@ -1,31 +1,18 @@
-type NameRegistered @entity(immutable: true) {
-  id: Bytes!
-  name: String! # string
-  label: Bytes! # bytes32
-  owner: Bytes! # address
-  baseCost: BigInt! # uint256
-  premium: BigInt! # uint256
-  expires: BigInt! # uint256
+type Rental @entity {
+  id: ID!
+  borrower: Bytes!
+  duration: BigInt!
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
 
-type NameRenewed @entity(immutable: true) {
-  id: Bytes!
-  name: String! # string
-  label: Bytes! # bytes32
-  cost: BigInt! # uint256
-  expires: BigInt! # uint256
-  blockNumber: BigInt!
-  blockTimestamp: BigInt!
-  transactionHash: Bytes!
-}
-
-type OwnershipTransferred @entity(immutable: true) {
-  id: Bytes!
-  previousOwner: Bytes! # address
-  newOwner: Bytes! # address
+type Listing @entity {
+  id: ID!
+  price: BigInt!
+  name: String!
+  lender: Bytes!
+  active: Boolean!
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!

@@ -5,28 +5,26 @@ schema:
   file: ./schema.graphql
 dataSources:
   - kind: ethereum
-    name: ETHRegistrarController
+    name: ENSRent
     network: sepolia
     source:
-      address: "0xFED6a969AaA60E4961FCD3EBF1A2e8913ac65B72"
-      abi: ETHRegistrarController
-      startBlock: 3790244
+      address: "0xbb053293241f0880844c00f519989b4f38cc2142"
+      abi: ENSRent
+      startBlock: 7091523
     mapping:
       kind: ethereum/events
       apiVersion: 0.0.7
       language: wasm/assemblyscript
       entities:
         - NameRegistered
-        - NameRenewed
-        - OwnershipTransferred
       abis:
-        - name: ETHRegistrarController
-          file: ./abis/ETHRegistrarController.json
+        - name: ENSRent
+          file: ./abis/ENSRent.json
       eventHandlers:
-        - event: NameRegistered(string,indexed bytes32,indexed address,uint256,uint256,uint256)
-          handler: handleNameRegistered
-        - event: NameRenewed(string,indexed bytes32,uint256,uint256)
-          handler: handleNameRenewed
-        - event: OwnershipTransferred(indexed address,indexed address)
-          handler: handleOwnershipTransferred
-      file: ./src/eth-registrar-controller.ts
+        - event: DomainListed(string,indexed uint256,indexed address,uint256,uint256,bytes32)
+          handler: handleDomainListed
+        - event: DomainReclaimed(indexed uint256,indexed address)
+          handler: handleDomainReclaimed
+        - event: DomainRented(indexed uint256,indexed address,uint256,uint256,uint256)
+          handler: handleDomainRented
+      file: ./src/ens-rent.ts
